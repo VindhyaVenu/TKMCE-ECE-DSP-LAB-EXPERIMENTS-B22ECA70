@@ -1,0 +1,24 @@
+clc; 
+clear all; 
+close all; 
+disp('-----1. Periodicity Property-----')
+x = input('Enter the Sequence: '); 
+N = length(x); 
+X = [x, x]; 
+y = zeros(1, 2 * N); 
+for k = 1:2 * N 
+  y(k) = 0; % Initialize summation for each k 
+  for n = 1:N
+    y(k) = y(k) + x(n) * exp(-1i * 2 * pi * (k - 1) * (n - 1) / N); 
+  end 
+end 
+disp('DFT of input in 1st period (1 to N):'); 
+disp(y(1:N)); 
+disp('DFT of input in 2nd period (N+1 to 2N):'); 
+disp(y(N+1:2*N)); 
+% Verify the periodicity property of the DFT 
+if abs(y(1:N) - y(N+1:2*N)) < 1e-6 
+  disp('Periodicity Property of DFT is verified'); 
+else 
+disp('Periodicity Property of DFT is not verified');
+end

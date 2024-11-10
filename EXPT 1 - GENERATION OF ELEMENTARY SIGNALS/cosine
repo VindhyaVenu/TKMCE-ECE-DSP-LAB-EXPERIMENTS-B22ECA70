@@ -1,0 +1,21 @@
+clc;
+clf;
+close all;
+clear all;
+Am = input('Enter Amplitude Am =') ;
+Fm = input ('Enter the frequency of the signal Fm =')
+cy = input('Enter the number of Cycles required:');
+t=0:(1/(50*Fm )): cy / Fm ;
+Amplitude = Am * cos(2*pi*Fm*t)
+subplot(121)
+plot(t, Amplitude);
+grid on;
+xlabel('time');
+ylabel ('Amplitude');
+title('cos wave');
+subplot (122);
+stem (t, Amplitude);
+grid on;
+xlabel('time');
+ylabel('Amplitude');
+title('discrete cos wave');

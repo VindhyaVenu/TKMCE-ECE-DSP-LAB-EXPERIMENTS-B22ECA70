@@ -1,0 +1,38 @@
+clc; 
+clear all; 
+close all;
+Y=input('Enter the DFT Sequence: '); 
+N=length(Y); 
+x=zeros (1,N); 
+for n=1:N 
+for k=1:N 
+x(n) = x(n) + (1/N) * Y(k) * exp((j * 2 * pi * (k - 1) * (n - 1)) / N); 
+end 
+end 
+disp('IDFT of input:'); 
+disp(x); 
+disp('IDFT using built-in function') 
+x1=ifft(Y);
+disp(x1);
+x_indices=1:N; 
+y_indices=1:N; 
+subplot(411) 
+stem(y_indices, abs (Y)); 
+title('magnitude plot of input sequence'); 
+xlabel('index');
+ylabel('Amplitude'); 
+subplot(412) 
+stem(y_indices, angle(Y)); 
+title('phase plot of input sequence'); 
+xlabel('index'); 
+ylabel('Angle(in rad)'); 
+subplot(413) 
+stem(x_indices, abs(x)); 
+title('magnitude plot of output sequence'); 
+xlabel('index'); 
+ylabel('Amplitude'); 
+subplot(414) 
+stem(x_indices, angle(x1)); 
+title('phase plot of output sequence'); 
+xlabel('index'); 
+ylabel('Angle(in rad)');

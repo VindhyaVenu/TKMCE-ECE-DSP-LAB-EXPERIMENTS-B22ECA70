@@ -1,0 +1,28 @@
+clc; 
+clear all; 
+close all; 
+x=input('Enter the Sequence: '); 
+N=length(x); 
+y=zeros(1,N);
+for k=1:N 
+  for n=1:N 
+  y(k) = y(k) + x(n) * exp((-j * 2 * pi * (k - 1) * (n - 1)) / N); 
+end 
+  end 
+disp('DFT of input:');
+disp(y); 
+disp('DFT using built-in function') 
+y1=fft(x); 
+disp(y1); 
+x_indices=1:N; 
+y_indices=1:N; 
+subplot(211) 
+stem(y_indices,abs(y)); 
+title('magnitude plot of output sequence'); 
+xlabel('index'); 
+ylabel('Amplitude'); 
+subplot(212) 
+stem(y_indices, angle(y)); 
+title('phase plot of output sequence'); 
+xlabel('index'); 
+ylabel('Angle');
